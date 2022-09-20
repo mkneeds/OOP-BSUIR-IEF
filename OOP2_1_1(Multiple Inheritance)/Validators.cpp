@@ -1,4 +1,4 @@
-п»ї#include "Validators.h"
+#include "Validators.h"
 #include "Window.h"
 
 using namespace std;
@@ -26,7 +26,7 @@ int checkInterval(int min, int max)
 	value = checkInt();
 	while (value < min || value > max)
 	{
-		cout << "";
+		cout << "Неккоректный ввод. Повторите попытку->";
 		value = checkInt();
 	}
 	return value;

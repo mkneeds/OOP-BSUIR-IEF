@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="OOP2_1_1(Multiple Inheritance).cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp">
@@ -27,9 +27,18 @@
     <ClCompile Include="Validators.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TextWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IntTextWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="IntWindow.h">
@@ -38,12 +47,15 @@
     <ClInclude Include="Validators.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Table.h">
+    <ClInclude Include="TextWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IntTextWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Inter.txt">
+    <Text Include="Text.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

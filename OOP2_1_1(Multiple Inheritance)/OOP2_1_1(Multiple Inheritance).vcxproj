@@ -21,9 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d0402b1a-d8d3-4a00-a866-3ba459ac536a}</ProjectGuid>
-    <RootNamespace>OOP21MultipleInheritance</RootNamespace>
+    <ProjectGuid>{630b938d-fbed-4695-bc72-1931da2764e0}</ProjectGuid>
+    <RootNamespace>OOP211MultipleInheritance</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>OOP2_1(Multiple Inheritance)</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -127,19 +128,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="IntTextWindow.cpp" />
     <ClCompile Include="IntWindow.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="OOP2_1_1(Multiple Inheritance).cpp" />
+    <ClCompile Include="TextWindow.cpp" />
     <ClCompile Include="Validators.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h" />
+    <ClInclude Include="Frame.h" />
+    <ClInclude Include="IntTextWindow.h" />
     <ClInclude Include="IntWindow.h" />
-    <ClInclude Include="Table.h" />
+    <ClInclude Include="TextWindow.h" />
     <ClInclude Include="Validators.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Inter.txt" />
+    <Text Include="Text.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

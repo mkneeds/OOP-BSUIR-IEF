@@ -21,9 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d0402b1a-d8d3-4a00-a866-3ba459ac536a}</ProjectGuid>
-    <RootNamespace>OOP21MultipleInheritance</RootNamespace>
+    <ProjectGuid>{7c5ecc59-699e-4d13-a27f-b82c52c2d229}</ProjectGuid>
+    <RootNamespace>OOP221</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>OOP2_1.1(Multiple Inheritance)</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -127,19 +128,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Window.cpp" />
-    <ClCompile Include="IntWindow.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Validators.cpp" />
+    <ClCompile Include="HTMLLayout.cpp" />
+    <ClCompile Include="Layout.cpp" />
+    <ClCompile Include="OOP2_2.1.cpp" />
+    <ClCompile Include="PatternLayout.cpp" />
+    <ClCompile Include="SimpleLayout.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h" />
-    <ClInclude Include="IntWindow.h" />
-    <ClInclude Include="Table.h" />
-    <ClInclude Include="Validators.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Inter.txt" />
+    <ClInclude Include="HTMLLayout.h" />
+    <ClInclude Include="Layout.h" />
+    <ClInclude Include="PatternLayout.h" />
+    <ClInclude Include="SimpleLayout.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

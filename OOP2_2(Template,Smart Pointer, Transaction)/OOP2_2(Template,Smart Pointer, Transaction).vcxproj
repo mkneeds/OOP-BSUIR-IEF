@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d0402b1a-d8d3-4a00-a866-3ba459ac536a}</ProjectGuid>
-    <RootNamespace>OOP21MultipleInheritance</RootNamespace>
+    <ProjectGuid>{55f42082-ba16-4856-a0e1-a843efc08a97}</ProjectGuid>
+    <RootNamespace>OOP22TemplateSmartPointerTransaction</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,19 +127,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Window.cpp" />
-    <ClCompile Include="IntWindow.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Validators.cpp" />
+    <ClCompile Include="Container.cpp" />
+    <ClCompile Include="Dict.cpp" />
+    <ClCompile Include="SmartPointer.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Transaction.cpp" />
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h" />
-    <ClInclude Include="IntWindow.h" />
-    <ClInclude Include="Table.h" />
-    <ClInclude Include="Validators.h" />
+    <ClInclude Include="Container.h" />
+    <ClInclude Include="Dict.h" />
+    <ClInclude Include="Header.h" />
+    <ClInclude Include="ShowTable.h" />
+    <ClInclude Include="SmartPointer.h" />
+    <ClInclude Include="Transaction.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Inter.txt" />
+    <Text Include="data.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

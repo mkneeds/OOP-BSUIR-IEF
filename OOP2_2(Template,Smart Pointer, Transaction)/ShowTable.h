@@ -12,18 +12,19 @@
 #endif
 #endif
 
-class TextWindow {
+class ShowTable
+{
 public:
     enum class Align { LEFT, RIGHT };
     typedef std::vector<std::string> Row;
-    TextWindow()
+    ShowTable()
         : _horizontal('-'), _vertical('|'), _corner('+'), _has_ruler(true) {}
 
-    TextWindow(char horizontal, char vertical, char corner)
+    ShowTable(char horizontal, char vertical, char corner)
         : _horizontal(horizontal), _vertical(vertical), _corner(corner),
         _has_ruler(true) {}
 
-    explicit TextWindow(char vertical)
+    explicit ShowTable(char vertical)
         : _horizontal('\0'), _vertical(vertical), _corner('\0'),
         _has_ruler(false) {}
 
@@ -51,7 +52,7 @@ public:
         endOfRow();
     }
 
-    template <typename Container> 
+    template <typename Container>
     void addRow(const Container& container) {
         addRow(container.begin(), container.end());
     }
@@ -153,7 +154,7 @@ private:
     }
 };
 
-inline std::ostream& operator<<(std::ostream& stream, const TextWindow& table) {
+inline std::ostream& operator<<(std::ostream& stream, const ShowTable& table) {
     if (table.rows().empty()) {
         return stream;
     }
@@ -163,10 +164,10 @@ inline std::ostream& operator<<(std::ostream& stream, const TextWindow& table) {
     }
     for (auto rowIterator = table.rows().begin();
         rowIterator != table.rows().end(); ++rowIterator) {
-        TextWindow::Row const& row = *rowIterator;
+        ShowTable::Row const& row = *rowIterator;
         stream << table.vertical();
         for (unsigned i = 0; i < row.size(); ++i) {
-            auto alignment = table.alignment(i) == TextWindow::Align::LEFT
+            auto alignment = table.alignment(i) == ShowTable::Align::LEFT
                 ? std::left
                 : std::right;
             stream << std::setw(table.width(i) + table.correctDistance(row[i]))
@@ -180,4 +181,5 @@ inline std::ostream& operator<<(std::ostream& stream, const TextWindow& table) {
     }
 
     return stream;
-}
+};
+

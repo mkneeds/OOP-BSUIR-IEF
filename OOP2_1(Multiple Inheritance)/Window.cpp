@@ -1,16 +1,18 @@
-#include "Interfaces.h"
+#include "Window.h"
 #include "Validators.h"
 
 using namespace std;
 
 void menu::menu() {
 	cout << "\t\tМеню:" << endl;
-	cout << "\t(1) ~ Создать окно" << endl;
-	cout << "\t(2) ~ Отобразить окно" << endl;
-	cout << "\t(3) ~ Редактирование" << endl;
-	cout << "\t(4) ~ Выход" << endl;
+	cout << "\t(1) ~ Добавить текстовое окно" << endl;
+	cout << "\t(2) ~ Добавить числовое окно" << endl;
+	cout << "\t(3) ~ Отобразить окно" << endl;
+	cout << "\t(4) ~ Редактирование" << endl;
+	cout << "\t(5) ~ Выход" << endl;
 	cout << "Ваш выбор: ";
 }
+
 
 void menu::changer() {
 	cout << "\t\tМеню параметров:" << endl;
@@ -52,17 +54,16 @@ void menu::changer() {
 //	
 //}
 
-TextWindow Interfaces::createInterface() {
+TextWindow Window::createInterface() {
 	cout << "Введите название блока который хотите добавить:";
-	string s;
-	cin >> s;
+	getline(cin, s);
 	t.add(s);
 	t.endOfRow();
 	push_in_file();
 	return t;
 }
 
-void Interfaces::showInterface() {
+void Window::showInterface() {
 	ifstream fin("Inter.txt");
 	string s;
 	while (getline(fin, s)) {
@@ -80,13 +81,13 @@ void Interfaces::showInterface() {
 }
 
 
-Interfaces::Interfaces() {
-	size_l = 0;
-	size_w = 0;
+Window::Window() {
+	Size_l = 0;
+	Size_w = 0;
 	s = "";
 }
 
-void Interfaces::push_in_file() {
+void Window::push_in_file() {
 	ofstream fout("Inter.txt", ios::app);
 	fout << t;
 	fout.close();
