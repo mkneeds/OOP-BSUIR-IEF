@@ -1,45 +1,45 @@
-#include "Transaction.h"
+#include"Transaction.h"
 
 template <class T>
 Transaction<T>& Transaction<T>::operator=(const Transaction<T>& obj) {
-	if (this != &obj) {//проверка на случай obj=obj
-		delete currentState;//удаление текущего значения объекта
-		currentState = new T(*(obj.currentState));//создание икопирование объекта, используя присваеваемую транзакцию
+	if (this != &obj) {
+		delete currentState;
+		currentState = new T(*(obj.currentState));
 	}
 	return *this;
 }
 
 template <class T>
-void Transaction<T>::showState(State state) {//метод отображениесостояния объекта
+void Transaction<T>::showState(State state) {
 	cout << "Состояние объекта ";
 	if (!state) cout << "до начала транзакции " << endl;
 	else cout << "после выполнения транзакции " << endl;
-	if (prevState) prevState->getWord();//предыдущее состояние
+	if (prevState) cout << "prevState = " << prevState->getDate() << endl;
 	else cout << "prevState = NULL" << endl;
-	currentState->getWord();//текущее состояние
+	cout << "currentState = " << currentState->getDate() << endl;
 }
 
 template <class T>
-int Transaction<T>::beginTransactions() {// методначала транзакции
-	delete prevState;//удаление предыдущего значения
-	prevState = currentState;//сохранение предыдущего состояниякак текущего
-	currentState = new T(*prevState);//текущее состояние создается!!!!!!!!!!!!!!
-	if (!currentState) return 0;//ошибка (необходимо отменитьтранзакцию)
-	currentState->addWord();//изменение состоянияобъекта
-	return 1;//успешное окончание транзакции
+int Transaction<T>::beginTransactions(string data,string translate) {
+	delete prevState;
+	prevState = currentState;
+	currentState = new T(*prevState);
+	if (!currentState) return 0;
+	currentState->setDate(data,translate);
+	return 1;
 }
 
 template <class T>
 void Transaction<T>::commit() {
-	delete prevState;//удаление предыдущего значения
-	prevState = NULL;//предыдущего состояния нет
+	delete prevState;
+	prevState = NULL;
 }
 template <class T>
 void Transaction<T>::deleteTransactions() {
 	if (prevState != NULL) {
-		delete currentState;//удаление текущего значения
-		currentState = prevState;//предыдущее становится текущим
-		prevState = NULL;//предыдущего состояния нет
+		delete currentState;
+		currentState = prevState;
+		prevState = NULL;
 	}
 }
 

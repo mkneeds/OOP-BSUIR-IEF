@@ -1,7 +1,14 @@
 #include "Container.h"
 #include "ShowTable.h"
+
 void Container::writeEndFile() {
 	ofstream fout("data.txt", ios::app);
+	for (int i = 0; word[i]; i++)
+		if (word[i] == ' ')
+			word[i] = '.';
+	for (int i = 0; translate[i]; i++)
+		if (translate[i] == ' ')
+			translate[i] = '.';
 	fout << key << " " << word << " " << translate;
 	fout << endl;
 	fout.close();
@@ -39,6 +46,12 @@ void Container::printInformation() {
 		t.add("Перевод");
 		t.endOfRow();
 		while (fout >> key_co >> word >> translate) {
+			for (int i = 0; word[i]; i++)
+				if (word[i] == '.')
+					word[i] = ' ';
+			for (int i = 0; translate[i]; i++)
+				if (translate[i] == '.')
+					translate[i] = ' ';
 			t.add(key_co);
 			t.add(word);
 			t.add(translate);
@@ -47,6 +60,12 @@ void Container::printInformation() {
 		cout << t;
 		fout.close();
 	}
+}
+void del_remove(string translate,ShowTable&t) {
+	for (int i = 0; translate[i]; i++)
+		if (translate[i] == '.')
+			translate[i] = ' ';
+	t.add(translate);
 }
 void Container::searchInformation() {
 	ShowTable t('-', '|', '+');
@@ -63,7 +82,7 @@ void Container::searchInformation() {
 		while (getline(fout, str)) {
 			if (str.find(searchStr) != std::string::npos) {
 				istringstream ist(str);
-				for (std::string word; ist >> word; t.add(word));
+				for (std::string word; ist >> word; del_remove(word,t));
 				t.endOfRow();
 				cout << t;
 			}

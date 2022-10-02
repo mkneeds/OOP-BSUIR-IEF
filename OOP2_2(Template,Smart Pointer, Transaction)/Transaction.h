@@ -18,7 +18,7 @@ public:
 	}//деструктор
 	Transaction& operator=(const Transaction& obj);//перегрузкаоператора присваивания
 	void showState(State state);//отображение состояний(предыдущего и текущего) объекта
-	int beginTransactions();//метод началатранзакции
+	int beginTransactions(string date,string translate);//метод началатранзакции
 	void commit();//метод подтверждения (коммита) транзакции
 	void deleteTransactions(); //метод отката транзакции
 	T* getCurrentStatePtr();

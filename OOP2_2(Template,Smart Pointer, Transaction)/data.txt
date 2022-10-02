@@ -1,5 +1,7 @@
-0  
-1 Пока Пока
-2  
-5 apple banna
-4  
+
+1 Привет Hello
+2 Яблоко Apple
+3 Пока Bye
+4 Банан Banano
+5 Денис Dan
+6 Привет.друг Bye.friend
