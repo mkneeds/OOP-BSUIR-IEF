@@ -59,7 +59,7 @@ float division(float divisible, float divisor) {
 	return divisible / divisor;
 }
 
-void Ex1() {
+void First_exp() {
 	float result, value = 3;
 	while (true) {
 		try {
@@ -74,12 +74,12 @@ void Ex1() {
 	}
 }
 
-void Ex9() {
+void Five_exp() {
 	try { PcSoftware *ob = new PcSoftware(1);
 	}
 	catch (int) { cout << "Construtor exception handler" << endl; }
 }
-void Ex8() {
+void Four_exp() {
 	char* p;
 	try
 	{
@@ -98,7 +98,7 @@ void Ex8() {
 }
 
 void termFunc();
-void Ex10() {
+void Three_exp() {
 	int i = 10, j = 0, result;
 	set_terminate(termFunc);
 	try {
@@ -118,13 +118,13 @@ void termFunc() {
 
 class Exception : public std::exception
 {
-	std::string _msg;
+	std::string msg;
 public:
-	Exception(const std::string& msg) : _msg(msg) {}
+	Exception(const std::string& msg) : msg(msg) {}
 
 	virtual const char* what() const noexcept override
 	{
-		return _msg.c_str();
+		return msg.c_str();
 	}
 };
 LONG new_filter(PEXCEPTION_POINTERS  pExceptionInfo)
@@ -133,7 +133,7 @@ LONG new_filter(PEXCEPTION_POINTERS  pExceptionInfo)
 	cout << "Код ошибки = " << hex << pExceptionInfo->ExceptionRecord->ExceptionCode << endl;
 	return EXCEPTION_EXECUTE_HANDLER;
 }
-void Ex2() {
+void Twice_exp() {
 	int* p = NULL;
 	LPTOP_LEVEL_EXCEPTION_FILTER  old_filter;
 	//устанавливаем новую функцию-фильтр необработанных исключений

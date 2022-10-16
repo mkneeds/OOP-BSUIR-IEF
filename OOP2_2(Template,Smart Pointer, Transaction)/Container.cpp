@@ -1,5 +1,6 @@
 #include "Container.h"
 #include "ShowTable.h"
+#include <cmath>
 
 void Container::writeEndFile() {
 	ofstream fout("data.txt", ios::app);
