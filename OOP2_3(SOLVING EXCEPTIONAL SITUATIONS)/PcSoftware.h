@@ -12,18 +12,16 @@ public:
 	int a;
 	PcSoftware() { OnPc = 0; }
 	PcSoftware(int a) {
-		cout << "Constructor of the PcSoftware class" << endl;
+		cout << "Конструктор класса сработал" << endl;
 		if (a) throw 1;
 	}
 	~PcSoftware() {
-		throw std::runtime_error("Distructor of the PcSoftware class");
-		cout << "Distructor PcSoftware" << endl;
+		throw std::runtime_error("Сработал диструктор");
+		cout << "Диструктор PCSoftware" << endl;
 	}
 
 	PcSoftware(int OnPc, int i) : OnPc(OnPc), a(i) {}
 	void SwitchPC();
-
-
 };
 
 

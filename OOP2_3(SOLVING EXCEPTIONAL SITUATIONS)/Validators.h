@@ -47,8 +47,9 @@ namespace menu {
 		cout << "\t(10) ~ Распечатать содержимое файла " << endl;
 		cout << "\t(11) ~ Удалить содержимое файла " << endl;
 		cout << "\t(12) ~ Поиск по файлу " << endl;
-		cout << "\t(13) ~ Удалить какую-то строку " << endl;
-		cout << "\t(14) ~ Выход" << endl;
+		cout << "\t(13) ~ Удалить какую-то строку/Изменить " << endl;
+		cout << "\t(14) ~ Добавить какую-то строку " << endl;
+		cout << "\t(15) ~ Выход" << endl;
 		cout << "Ваш выбор: ";
 	}
 
@@ -172,23 +173,30 @@ void search_in_file() {
 
 	cout << "Введите слово для поиска: ";
 	cin >> find;
+	string g;
+	int count=0;
+	for (int i = 0; g[i] == '\0'; i++) {
+		int pos = s.find(find); // поиск
+		if (pos == -1)
+			cout << "Ничего не найдено" << endl;
+		else {
+			count++;
+		}
 
-	int pos = s.find(find); // поиск
+		file.close();
 
-	if (pos == -1)
-		cout << "Ничего не найдено" << endl;
-	else
-		cout << "Найдено совпадение" << find << "Позиция ->"<< pos << endl;
-	file.close();
+		
+	}
+	cout << "Число совпадений->" << count << endl;
 }
 
 void delete_inform() {
 	ifstream file_zin;
 	file_zin.open("window.txt");
-	if (!file_zin) {
+	if (file_zin.bad()) {
 		cout << "Ошибка, невозможно открыть файл: " << endl;
 	}
-	cout << "Введите запись которую нужно удалить..." << endl;
+	cout << "Введите запись которую нужно удалить/изменить..." << endl;
 	char* str = new char[256];
 	cin >> str;
 	char* str_check = new char[256];
@@ -201,13 +209,6 @@ void delete_inform() {
 			proverka = 1;
 			nomer_str++;
 			break;
-		}
-		else {
-			checker++;
-		}
-		if (checker % 3 == 0) {
-			checker = 0;
-			nomer_str++;
 		}
 	}
 	if (proverka != 1) {
@@ -234,8 +235,28 @@ void delete_inform() {
 		file_zout.write(line_file_text.c_str(), line_file_text.size());
 		file_zout.clear();
 		file_zout.close();
+		cout << "Строка успешно удалена!" << endl;
+		cout << "Введите что вы хотите добавить" << endl;
+		string str;
+		cin>>str;
+		ofstream vmdelet_out;
+		vmdelet_out.open("window.txt", std::ios::app);
+		if (vmdelet_out.is_open()) {
+			vmdelet_out << str;
+		}
+		vmdelet_out.close();
 	}
-	system("pause");
-	delete[]str_check;
-	delete[]str;
+	
+}
+
+void add_inform() {
+	cout << "Введите что вы хотите добавить" << endl;
+	string str;
+	getline(cin, str);
+	ofstream vmdelet_out;
+	vmdelet_out.open("window.txt", std::ios::app);
+	if (vmdelet_out.is_open()) {
+		vmdelet_out << str;
+	}
+	vmdelet_out.close();
 }

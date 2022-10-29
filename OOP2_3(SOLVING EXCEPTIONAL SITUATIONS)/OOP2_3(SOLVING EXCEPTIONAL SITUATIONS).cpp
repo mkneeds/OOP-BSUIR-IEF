@@ -17,7 +17,7 @@ int main()
     PcSoftware pc;
     while (1) {
         menu::menu();
-        switch (checkInterval(1, 14)) {
+        switch (checkInterval(1, 15)) {
         case 1: pc.SwitchPC(); break;
         case 2: pc.print_i(); break;
         case 3: pc.print_ifform(); break;
@@ -40,7 +40,8 @@ int main()
         case 11: delete_file(); break;
         case 12: search_in_file(); break;
         case 13: delete_inform(); break;
-        case 14: return 0;
+        case 14: add_inform(); break;
+        case 15: return 0;
 
         }
     }
