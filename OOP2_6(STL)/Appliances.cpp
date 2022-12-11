@@ -1,29 +1,29 @@
 #include "Appliances.h"
 #include <algorithm>
 
-void Appliances::write_end_file() {
+void Shoe::write_end_file() {
     for (int i = 0; name[i]; i++)
         if (name[i] == ' ')
             name[i] = '.';
-    for (int i = 0; type_of_appliences[i]; i++)
-        if (type_of_appliences[i] == ' ')
-            type_of_appliences[i] = '.';
+    for (int i = 0; type_of_shoe[i]; i++)
+        if (type_of_shoe[i] == ' ')
+            type_of_shoe[i] = '.';
 	ofstream fout(name_file, ios::app);
-	fout << id_product << " " << type_of_appliences << " " << name << " " << price << " " << quantity;
+	fout << id_product << " " << type_of_shoe << " " << name << " " << price << " " << quantity;
 	fout << endl;
 	fout.close();
 }
 
-void Appliances::write_end_file_type() {
-    for (int i = 0; type_of_appliences[i]; i++)
-        if (type_of_appliences[i] == ' ')
-            type_of_appliences[i] = '.';
+void Shoe::write_end_file_type() {
+    for (int i = 0; type_of_shoe[i]; i++)
+        if (type_of_shoe[i] == ' ')
+            type_of_shoe[i] = '.';
     ofstream fout(map_file, ios::app);
-    fout << id_product << " " << type_of_appliences;
+    fout << id_product << " " << type_of_shoe;
     fout << endl;
     fout.close();
 }
-void Appliances::upload_id() {
+void Shoe::upload_id() {
     ifstream fin(name_file, ios::in);
     string line;
     if (!fin) {
@@ -36,7 +36,7 @@ void Appliances::upload_id() {
     }
     fin.close();
 }
-void Appliances::print_map() {
+void Shoe::print_map() {
     load_from_file(arr_type);
     ShowTable table;
     table.add("Номер");
@@ -53,7 +53,7 @@ void Appliances::print_map() {
     cout << table;
 }
 
-void Appliances::load_from_file(map<int, string>& arr_type) {
+void Shoe::load_from_file(map<int, string>& arr_type) {
     ifstream f(map_file);
     int key;
     string temp;
@@ -62,23 +62,23 @@ void Appliances::load_from_file(map<int, string>& arr_type) {
     }
     f.close();
 }
-void Appliances::load_from_file(vector<Appliances>& v) {
+void Shoe::load_from_file(vector<Shoe>& v) {
     ifstream f(name_file);
-    Appliances temp;
+    Shoe temp;
     while (f >> temp) {
         v.push_back(temp);
     }
     f.close();
 }
-void Appliances::choose_type(int key) {
-    type_of_appliences = arr_type[key];
+void Shoe::choose_type(int key) {
+    type_of_shoe = arr_type[key];
 }
 
-void Appliances::add_product() {
+void Shoe::add_product() {
     cout << "\t\t--> Добавление нового продукта <---" << endl;
     upload_id();
     print_map();
-    cout << "Выберете категорию техники:";
+    cout << "Выберете категорию обуви:";
     int choose;
     cin >> choose;
     choose_type(choose);
@@ -92,7 +92,7 @@ void Appliances::add_product() {
     cout << "Товар успешно добавлен!" << endl;
     write_end_file();
 }
-void Appliances::print_shop() {
+void Shoe::print_shop() {
     cout << "\t\t----> Перечень товаров в наличии <----" << endl;
     ShowTable t;
     t.add("Номер товара");
@@ -101,14 +101,14 @@ void Appliances::print_shop() {
     t.add("Цена");
     t.add("Количество");
     t.endOfRow();
-    Appliances temp;
+    Shoe temp;
     ifstream fin(name_file, ios::in);
     while (fin >> temp) {
         t.add(to_string(temp.id_product));
-        for (int i = 0; temp.type_of_appliences[i]; i++)
-            if (temp.type_of_appliences[i] == '.')
-                temp.type_of_appliences[i] = ' ';
-        t.add(temp.type_of_appliences);
+        for (int i = 0; temp.type_of_shoe[i]; i++)
+            if (temp.type_of_shoe[i] == '.')
+                temp.type_of_shoe[i] = ' ';
+        t.add(temp.type_of_shoe);
         for (int i = 0; temp.name[i]; i++)
             if (temp.name[i] == '.')
                 temp.name[i] = ' ';
@@ -121,17 +121,17 @@ void Appliances::print_shop() {
     cout << t;
 }
 
-void Appliances::add_map() {
+void Shoe::add_map() {
     cout << "\t\t~~~Добавление новой категории~~~" << endl;
     cout << "Введите номер" << endl;
     cin >> id_product;
     cout << "Введите категорию" << endl;
-    getline(cin, type_of_appliences);
+    getline(cin, type_of_shoe);
     cout << "Категория успешно добавлена" << endl;
     write_end_file_type();
 }
 
-void Appliances::edit_product() {
+void Shoe::edit_product() {
         load_from_file(arr_product);
         print_shop();
         int temp;
@@ -166,7 +166,7 @@ void Appliances::edit_product() {
             int choose;
             cin >> choose;
             choose_type(choose);
-            arr_product[index].type_of_appliences = type_of_appliences;
+            arr_product[index].type_of_shoe = type_of_shoe;
 
         }break;
         case 2: {
@@ -186,14 +186,14 @@ void Appliances::edit_product() {
         }break;
         }
         ofstream onz(name_file);
-        copy(arr_product.begin(), arr_product.end(), ostream_iterator<Appliances>(onz, "\n"));
+        copy(arr_product.begin(), arr_product.end(), ostream_iterator<Shoe>(onz, "\n"));
         onz.close();
         arr_product.clear();
 }
 
-void Appliances::del_product() {
-    vector<Appliances>tz;
-    vector<Appliances>tk;
+void Shoe::del_product() {
+    vector<Shoe>tz;
+    vector<Shoe>tk;
     load_from_file(tz);
     print_shop();
     int temp;
@@ -204,7 +204,7 @@ void Appliances::del_product() {
         if (tz[i].id_product != temp) {
             tk.push_back(tz[i]);
             ofstream onz(name_file);
-            copy(tk.begin(), tk.end(), ostream_iterator<Appliances>(onz, "\n"));
+            copy(tk.begin(), tk.end(), ostream_iterator<Shoe>(onz, "\n"));
             onz.close();
             count = 1;
         }
@@ -246,26 +246,26 @@ int checkIntervals(int min, int max)
     return value;
 }
 
-void Appliances::sort_product() {
+void Shoe::sort_product() {
     arr_product.clear();
     load_from_file(arr_product);
-    vector<Appliances*> tz;
+    vector<Shoe*> tz;
     for (auto item : arr_product) {
-        tz.push_back(new Appliances(item.type_of_appliences, item.id_product, item.name, item.price, item.quantity));
+        tz.push_back(new Shoe(item.id_product, item.type_of_shoe, item.name, item.price, item.quantity));
     }
-    cout << "\t\tМеню сортировки:" << endl;
+    cout << "\t\tМеню сортировки:(Чтобы сортировать по убыванию перед цифрой -)" << endl;
     cout << "\t(1) ~ Отсортировать по номеру" << endl;
     cout << "\t(2) ~ Отсортировать по цене" << endl;
     cout << "\t(3) ~ Отсортировать по количеству" << endl;
     cout << "Ваш выбор: ";
     int what = checkIntervals(-3, 3);
-    stable_sort(tz.begin(), tz.end(), comp_data(what));
+    sort(tz.begin(), tz.end(), comp_data(what));
     arr_product.clear();
     for (auto item : tz) {
         arr_product.push_back(*item);
     }
     ofstream onz(name_file);
-    copy(arr_product.begin(), arr_product.end(), ostream_iterator<Appliances>(onz, "\n"));
+    copy(arr_product.begin(), arr_product.end(), ostream_iterator<Shoe>(onz, "\n"));
     onz.close();
     arr_product.clear();
     print_shop();

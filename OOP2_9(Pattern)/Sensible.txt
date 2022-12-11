@@ -1,0 +1,3 @@
+0 Tech Something.related.to.technology
+1 motherboard Printed.circuit.board,.which.is.the.basis.for.building.a.modular.electronic.device
+2 Привет Hello

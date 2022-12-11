@@ -6,7 +6,7 @@
 int main()
 {
 	setlocale(0, "rus");
-	Appliances shop;
+	Shoe shop;
 	while (1) {
 		cout << "\t\t---->  Меню Программы  <----" << endl;
 		cout << "\t1.Вывести весь ассортимент" << endl;
